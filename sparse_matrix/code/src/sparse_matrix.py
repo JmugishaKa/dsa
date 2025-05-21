@@ -1,4 +1,4 @@
-# My Sparse Matrix Program for Assignment 2
+# My Sparse Matrix Program for HW01.
 # Built from scratch to handle big matrices with mostly zeros
 # I used a dictionary to store only non-zero values to save space
 # Follows the file format given in class, with error checking

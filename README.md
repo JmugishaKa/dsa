@@ -46,7 +46,6 @@ cols=3180
 (0, 381, -694)
 (0, 128, -838)
 
-
 -------------------------------------------------------
 Usage
 
@@ -59,7 +58,7 @@ Select an operation (1 (addition), 2 (subtraction), 3 (multiplication)).
 Enter the file paths (e.g., ../../sample_inputs/easy_sample_01_2.txt).
 Enter the output file path (e.g., ../../output.txt).
 
----------------------------------------------------------------
+
 Example:
 Sparse Matrix Operations
 1. Addition
@@ -75,15 +74,20 @@ Error Handling
 The program handles the following errors:
 
 Invalid file format (e.g.incorrect parentheses, non-integer values,... ).
+
 File not being found.
+
 Out-of-bounds row or column indices.
 
 Errors are reportedusing short messages, like, Error: Input file has wrong format.
 ----------------------------------------------------------------------
 Notes:
 .The code uses built-in Python functionality only.
+
 .The implementation of the code is tried on sample input files from the google drive link: https://drive.google.com/drive/folders/17JkqxKGo0x9LD5hjdbpPoIGOCEmq9SGJ.
+
 .Ensuring input files are well-formatted to avoid errors.
+
 .The code will handle large matrices, by storing only non-zero elements effectively.
 --------------------------------------
 Author:

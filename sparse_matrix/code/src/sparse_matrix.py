@@ -1,16 +1,17 @@
 # My Sparse Matrix Program for HW01.
-# Built from scratch to handle big matrices with mostly zeros
-# I used a dictionary to store only non-zero values to save space
-# Follows the file format given in class, with error checking
+# Would Handle big matrices with mostly zeros.
+# I will use a dictionary to store only non-zero values to save space.
+# Needs to include error checking.
 
+# deifinig a class function
 class MatrixSparse:
-    def __init__(self, input_file=None, num_rows=None, num_cols=None):
-        # Set up the matrix, either from a file or just with dimensions
-        self.values = {}  # Holds (row, col) -> value for non-zeros
+    def __init__(self, input_file=None, num_rows=None, num_cols=None): 
+# Set up the matrix, either from a file or just with dimensions
+        self.values = {}  # For (row, col) -> value for non-zeros
         self.rows = 0
         self.cols = 0
         if input_file:
-            self.load_matrix(input_file)  # Read from file
+            self.load_matrix(input_file)  # Reading from the file
         else:
             if not num_rows or not num_cols or num_rows <= 0 or num_cols <= 0:
                 raise ValueError("Need valid row and column numbers!")
@@ -123,30 +124,31 @@ class MatrixSparse:
             result.set_value(pos[0], pos[1], current - val)
         return result
 
+    # Multiply the matrix by another matrices
     def multiply_matrices(self, other):
-        # Multiply this matrix by another
+       
         if self.cols != other.rows:
             raise ValueError("Number of columns in first matrix must equal rows in second")
         
         result = MatrixSparse(num_rows=self.rows, num_cols=other.cols)
-        # Loop through non-zero elements
+        # Looping into non-zero elements
         for (i, k), val1 in self.values.items():
             for (k2, j), val2 in other.values.items():
-                if k == k2:  # Match column of first with row of second
+                if k == k2:  # Matching first column with second row
                     current = result.get_value(i, j)
                     result.set_value(i, j, current + val1 * val2)
         return result
 
     def write_to_file(self, file_path):
-        # Save the matrix to a file
+        # Saving  the matrix  to a file from the provided path
         with open(file_path, 'w') as f:
             f.write(f"rows={self.rows}\n")
             f.write(f"cols={self.cols}\n")
-            # Sort by row, then column for neat output
+                             # Sorting first by row and then column for a good output
             for row, col in sorted(self.values.keys()):
                 f.write(f"({row}, {col}, {self.values[(row, col)]})\n")
 
-# Program to let user pick an operation and files
+# Prompt steps to allow user select an operation and files
 def run_program():
     print("Sparse Matrix Program")
     print("1) Add two matrices")
@@ -163,11 +165,11 @@ def run_program():
     out_file = input("Enter output file name: ").strip()
 
     try:
-        # Load matrices
+        # Load the  matrices from the file
         mat1 = MatrixSparse(input_file=file_a)
         mat2 = MatrixSparse(input_file=file_b)
 
-        # Do the chosen operation
+        # To be done on the operation selected by the user
         if choice == "1":
             result = mat1.add_matrices(mat2)
         elif choice == "2":
@@ -175,14 +177,17 @@ def run_program():
         else:
             result = mat1.multiply_matrices(mat2)
 
-        # Save the result
+        
+        # Saving the response to be given
         result.write_to_file(out_file)
         print(f"Output saved to {out_file}")
 
+    
     except ValueError as e:
         print(f"Error: {e}")
     except Exception as e:
         print(f"Oops, something broke: {e}")
+
 
 if __name__ == "__main__":
     run_program()

@@ -12,7 +12,7 @@ Table of contents:
 --------------------------------------------------
 Overview
 
-This project implements a sparse matrix data structure and operations in Python. It encorporates a dictionary-based coordinate list (COO) format to manipulate and store large sparse matrices. The code allows and supports reading matrices from files, performing addition(+), subtraction(-), and multiplication(*), and saves the feedback to output file.
+This project implements a sparse matrix data structure and operations in Python. The code allows and supports reading matrices from files, performing addition(+), subtraction(-), and multiplication(*), and saves the feedback to output file.
 -------------------------------------------------------
 Features
 
